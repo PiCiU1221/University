@@ -311,6 +311,7 @@ int main()
        Zakładamy, że taka nieujemna całkowita liczba x istnieje. 
     */
 
+    /*
     int a, b, c, d;
     int x = 1;
     
@@ -344,25 +345,86 @@ int main()
     }
 
     cout << x - 1 << endl;
+    */
 
     // ZAD 12
     /* Napisz program, który wczytuje ze standardowego wejścia dodatnią liczbę n i wypisuje na standardowym
        wyjściu sumę wszystkich liczb mniejszych od n, względnie pierwszych z n. 
     */
 
-    int n, t, suma;
+    /*
+    int i, j, n;
+    int suma = 0;
+    int nwd = 0;
+    i = 2;
 
     cout << "Wprowadz n: ";
     cin >> n;
 
     while (i < n) {
-        while (j != 0) {
-            if (n < b) {
-                t = a;
-                a = b;
-                b = t;
+        nwd = 0;
+        j = 1;
+        while (j < i) {
+            if (i % j == 0) {
+                nwd = j;
             }
+            j++;
+        }
+        if (nwd == 1) {
+            suma = suma + j;
+            cout << j << endl;
         }
         i++;
     }
+    cout << "Suma liczb wzglednie pierwszych: " << suma << endl;
+    */
+
+    // ZAD 13
+    /* Napisz program, który wczytuje ze standardowego wejścia nieujemną liczbę całkowitą n i wypisuje na
+       standardowym wyjściu wartość 0! + 1! + . . . + n!. 
+    */
+
+    /*
+    int n;
+    int suma = 1;
+    int poprzedni = 1;
+
+    cout << "Wprowadz liczbe n: ";
+    cin >> n;
+    while (n <= 0) {
+        cout << "Liczba musi byc dodatnia" << endl;
+        cout << "Wprowadz liczbe n: ";
+        cin >> n;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        suma = suma + poprzedni * i;
+        poprzedni = poprzedni * i;
+    }
+
+    cout << "Wynik: " << suma << endl;
+    */
+
+    // ZAD 14
+    /* Napisz program, który wczytuje ze standardowego wejścia liczbę n i wypisuje na standardowym wyjściu
+       wszystkie trojki pitagorejskie (tj. trojki liczb całkowitych a, b, c takich, że a2 +b2 = c2), składające się z liczb
+       mniejszych od n. 
+    */
+
+    /*
+    int n;
+
+    cout << "Wprowadz liczbe n: ";
+    cin >> n;
+
+    for (int a = 1; a < n; a++) {
+        for (int b = 1; b < n; b++) {
+            for (int c = 1; c < n; c++) {
+                if (a * a + b * b == c * c && a < b) {
+                    cout << a << " " << b << " " << c << endl;
+                }
+            }
+        }
+    }
+    */
 }
