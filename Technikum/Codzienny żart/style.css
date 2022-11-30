@@ -1,0 +1,76 @@
+body {
+  background-image: url('Grafika/Background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: right;
+	font-size: 20px;
+	color: white;
+}
+
+#okienko {
+	positon: absolute;
+	width: 800px;
+	height: 500px;
+	margin: auto;
+	margin-top: 250px;
+	background-color: white;
+	border-radius: 25px;
+	border: 10px ridge #009900;
+}
+
+h1 {
+	margin-left: 70px;
+	margin-top: 40px;
+	color: #009900;
+	font-size: 40px;
+	font-family: arial;
+}
+
+#zart {
+	margin-left: 70px;
+	margin-right: 70px;
+	margin-top: -30px;
+	font-size: 28px;
+	line-height: 1.5;
+	display: inline-block;
+	vertical-align: middle;
+	font-family: arial;
+}
+
+#zart p {
+	line-height: 50px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  position: absolute;
+  margin-top: 315px;
+  margin-left: -480px;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

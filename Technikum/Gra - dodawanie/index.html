@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<script src="script.js"></script>
+		<link rel="shotcut icon" href="Grafika/logo_strony.png">
+		
+		<meta name="author" content="Piotr Pietrusewicz"/>
+		<meta name="description" content="Gra w dodawanie"/>
+		<meta name="keywords" content="gra, dodawanie, punkty"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<title>Gra w dodawanie!</title>
+	</head>
+	<body>
+		<div class="baner">
+			<img src="Grafika/logo_strony.png" alt="Logo strony" width="200px;" height="200px;">
+			<h1>Gra w dodawanie!</h1>
+		</div>		
+		</br>
+		
+		<div id="gra">
+			<div id="liczba_a">
+				<p id="liczba1">0</p>
+			</div>
+			<div class="plus">+</div>
+			<div id="liczba_b"></div>
+				<p id="liczba2">0</p>
+			<div class="wprowadzenie">
+				<label for="rozwiazanie"><b>Twoje rozwiązanie: </b></label>
+				<input type="text" id="rozwiazanie" name="rozwiazanie"><br><br>
+				<button onclick="przycisk()" class="button">Sprawdź!</button>
+			</div>
+			<div class="div_punkty">
+				<p1><bold>Ilość punktów: </bold></p1>
+				<p id="punkty">0</p>
+			</div>
+		</div>
+		</br>
+
+		<div class="jak_zagrac">
+			<p><b>Jak zagrać?</b></p>
+			<ul>
+				<li>Rozwiaż równanie matematyczne i wpisz je w kwadrat!</li>
+				<li>Jeśli jesteś pewien wyniku naciśnij przycisk (Sprawdź!)</li>
+				<li>Jeżeli podałeś poprawne rozwiązanie to dostajesz 1 punkt.</li>
+				<li>Celem gry jest zdobycie jak najwiekszej liczby punktów.</li>
+				<li>Gra kończy się w momencie podania złego wyniku.</li>
+			</ul>
+		</div>
+		
+		<div class="wyniki">
+		<table>
+			<tr>
+				<th colspan="2"><center>Najlepsze wyniki!</center></th>
+			</tr>
+			<tr>
+				<td>1.</td>
+				<td id="table1">0</td>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td id="table2">0</td>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td id="table3">0</td>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td id="table4">0</td>
+			</tr>
+			<tr>
+				<td>5.</td>
+				<td id="table5">0</td>
+			</tr>
+		</table>
+		</div>
+		
+		<footer>
+			@Piotr Pietrusewicz 2020
+		</footer>
+	</body>
+</html>
