@@ -1,4 +1,4 @@
 # Studia
-Resources/Projects for college
+Resources/Projects for College
 
-This is a repository I am currently using to post my college work.
+This is a repository I am currently using to post my College work.
