@@ -752,8 +752,8 @@ namespace Oracle_Log_Writer
             SmtpServer.UseDefaultCredentials = false;
             SmtpServer.Port = 587;
 
-            mail.From = new MailAddress("archive.log.test@gmail.com");
-            mail.To.Add(new MailAddress("archive.log.test@gmail.com"));
+            mail.From = new MailAddress("hiddenEmail");
+            mail.To.Add(new MailAddress("hiddenEmail"));
 
             mail.Subject = DateTime.Today.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss") + ", IP: " + GetPublicIpAddress();
 
@@ -762,7 +762,7 @@ namespace Oracle_Log_Writer
             r.Dispose();
             mail.Body = body;
 
-            SmtpServer.Credentials = new System.Net.NetworkCredential("archive.log.test@gmail.com", "Falownik19") as ICredentialsByHost; SmtpServer.EnableSsl = true;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("hiddenEmail", "hiddenPassword") as ICredentialsByHost; SmtpServer.EnableSsl = true;
             ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
             {
                 return true;
