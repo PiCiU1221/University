@@ -252,11 +252,11 @@ int main() {
 
 	// wyswietlamy ponownie elementy macierzy
 	cout << "Macierz A:" << endl;
-	//wyswietlenie_macierzy(matrix_a, matrix_a_rows, matrix_a_columns);
+	wyswietlenie_macierzy(matrix_a, matrix_a_rows, matrix_a_columns);
 	cout << "Macierz B:" << endl;
-	//wyswietlenie_macierzy(matrix_b, matrix_b_rows, matrix_b_columns);
+	wyswietlenie_macierzy(matrix_b, matrix_b_rows, matrix_b_columns);
 	cout << "Macierz C:" << endl;
-	//wyswietlenie_macierzy(matrix_c, matrix_c_rows, matrix_c_columns);
+	wyswietlenie_macierzy(matrix_c, matrix_c_rows, matrix_c_columns);
 
 	// na koniec dzialania programu usuwamy z pamieci wczesniej zarezerwowana pamiec
 	zwolnienie_pamieci(matrix_a, matrix_a_rows);
