@@ -1,0 +1,30 @@
+unsigned long previousMillis = 0;
+
+const long interval = 1000;
+
+int i = 11;
+
+void setup() {
+	for (int i = 2; i <= 13; i++) {
+		pinMode(i, OUTPUT);
+	}
+	for (int i = 2; i <= 13; i++) {
+		digitalWrite(i, HIGH);
+	}
+	digitalWrite(11, LOW);
+}
+
+void loop() {
+	unsigned long currentMillis = millis();
+
+	if (currentMillis - previousMillis >= interval) {
+		previousMillis = currentMillis;
+		
+		digitalWrite(i, HIGH);
+		i++;
+		if (i > 13) {
+			i = 11;
+		}
+		digitalWrite(i, LOW);
+	}
+}
