@@ -1,0 +1,68 @@
+unsigned long previousMillis, previousMillis2 = 0;
+
+const long interval = 1;
+const long interval2 = 500;
+
+int j, m = 0;
+bool end = false;
+
+void setup() {
+	for (int j = 2; j <= 13; j++) {
+		pinMode(j, OUTPUT);
+	}
+	digitalWrite(11, HIGH);
+	digitalWrite(12, HIGH);
+	digitalWrite(13, HIGH);
+}
+
+void loop() {
+	unsigned long currentMillis = millis();
+
+	if (currentMillis - previousMillis >= interval) {
+		previousMillis = currentMillis;
+
+		for (int i = 0; i <= j; i++) {
+			digitalWrite(i+2, HIGH);
+			digitalWrite(m+11, LOW);
+			delay(10);
+			digitalWrite(i+2, LOW);
+			digitalWrite(m+11, HIGH);
+		}
+
+		for (int l = 0; l < m; l++) {
+			for (int i = 0; i <= 8; i++) {
+				digitalWrite(i+2, HIGH);
+				digitalWrite(l+11, LOW);
+				delay(10);
+				digitalWrite(i+2, LOW);
+				digitalWrite(l+11, HIGH);
+			}
+		}
+	}
+	
+	if (currentMillis - previousMillis2 >= interval2) {
+		previousMillis2 = currentMillis;
+		
+		if (end == false) {
+			j++;
+		} else {
+			j--;
+		}
+		if (j == 9 && m < 2 && end != true) {
+			m++;
+			j=0;
+		}
+		if (j == -1 && m != -1) {
+			j = 8;
+			m--;
+		}
+		if (end == true && j == 7 && m == -1) {
+			end = false;
+			m = 0;
+			j = 0;
+		}
+		if (m == 2 && j == 8) {
+			end = true;
+		}
+	}
+}
