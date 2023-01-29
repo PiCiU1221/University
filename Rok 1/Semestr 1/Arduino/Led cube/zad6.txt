@@ -64,5 +64,8 @@ void loop() {
 		if (m == 2 && j == 8) {
 			end = true;
 		}
+		if (m == 0 && j != 8) {
+			digitalWrite(10, LOW);
+		}
 	}
 }
