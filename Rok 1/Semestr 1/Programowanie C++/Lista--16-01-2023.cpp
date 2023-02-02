@@ -182,7 +182,6 @@ void dodawanie(ListNode* head) {
 	printf("========================================\n");
 
 	cin.ignore();
-	menu(head);
 }
 
 // funkcja do sprawdzenia czy dwa stringi sa identyczne, dlatego pomniejszamy
@@ -271,7 +270,6 @@ void wyszukiwanie(ListNode* head) {
 
 	cin.ignore();
 	cin.ignore();
-	menu(head);
 }
 
 void usuwanie(ListNode* head) {
@@ -394,7 +392,6 @@ void usuwanie(ListNode* head) {
 	printf("========================================\n");
 
 	cin.ignore();
-	menu(head);
 }
 
 void wyswietlanie(ListNode* head) {
@@ -491,7 +488,6 @@ void wyswietlanie(ListNode* head) {
 
 	cin.ignore();
 	cin.ignore();
-	menu(head);
 }
 
 void dodawanie_z_pliku(ListNode* head) {
@@ -546,7 +542,6 @@ void dodawanie_z_pliku(ListNode* head) {
 	printf("========================================\n");
 
 	cin.ignore();
-	menu(head);
 }
 
 void zapisywanie_do_pliku(ListNode* head) {
@@ -583,7 +578,6 @@ void zapisywanie_do_pliku(ListNode* head) {
 	printf("========================================\n");
 
 	cin.ignore();
-	menu(head);
 }
 
 void swapNodes(ListNode* item1, ListNode* item2, ListNode* head) {
@@ -676,7 +670,23 @@ void sortowanie(ListNode* head) {
 	printf("========================================\n");
 
 	cin.ignore();
-	menu(head);
+}
+
+void czyszczenie_koncowe(ListNode* head) {
+	struct ListNode* fakeHead = head;
+
+	while (fakeHead->next != NULL) {
+		fakeHead = fakeHead->next;
+	}
+
+	while (fakeHead->prev != NULL) {
+		fakeHead = fakeHead->prev;
+		free(fakeHead->next);
+	}
+
+	free(fakeHead);
+
+	exit(0);
 }
 
 void menu(ListNode* head) {
@@ -704,32 +714,41 @@ void menu(ListNode* head) {
 
 	switch (wybor) {
 	case 0:
-		exit(0);
+		czyszczenie_koncowe(head);
+		break;
 	case 1:
 		dodawanie(head);
+		break;
 	case 2:
 		wyszukiwanie(head);
+		break;
 	case 3:
 		usuwanie(head);
+		break;
 	case 4:
 		wyswietlanie(head);
+		break;
 	case 5:
 		dodawanie_z_pliku(head);
+		break;
 	case 6:
 		zapisywanie_do_pliku(head);
+		break;
 	case 7:
 		sortowanie(head);
+		break;
 	default:
 		cin.clear();
-		cin.ignore(INT_MAX, '\n');
 		printf("Wpisano niepoprawna liczbe\n\n");
 		printf("Nacisnij enter by wrocic do menu");
 		cin.ignore();
-		menu(head);
 	}
 }
 
 int main() {
 	struct ListNode* head = new ListNode();
-	menu(head);
+
+	while (true) {
+		menu(head);
+	}
 }
