@@ -7,6 +7,15 @@
 
 using namespace std;
 
+/*
+	Piotr Pietrusewicz 53828 120A
+	Temat: Gie³da samochodowa Czêœæ II (gry)
+
+	8. Gra w poscig wykorzystujaca tablice dwuwymiarowa.
+	9. Gra w snake wykorzystujaca klasy, ich metody oraz wektory
+*/
+
+// definicje funkcji przeniesione na oddzielny plik dla lepszej czytelnosci pliku main
 string Marki[4] = { "Audi", "BMW", "Skoda", "Volkswagen" };
 string Rejestracje[4] = { "ZST", "ZS", "ZCH", "ZPY" };
 
@@ -17,6 +26,26 @@ int generujInteger(int odLiczby, int doLiczby) {
 	return dis(gen);
 }
 
+// przeladowane funkcje losowania nowego elementu auto dla tablicy struktow i tablicy wskaznikow
+void dodajLosoweAuto(Auto* tablica, int i) {
+	/*
+	tablica[i].marka = Marki[rand() % (4)];
+	tablica[i].numerRejestracyjny = Rejestracje[rand() % (4)] + " " + to_string(rand() % 89999 + 10000);
+	tablica[i].iloscKoni = rand() % 131 + 70;
+	*/
+
+	tablica[i].marka = Marki[generujInteger(0, 3)];
+	tablica[i].numerRejestracyjny = Rejestracje[generujInteger(0, 3)] + " " + to_string(generujInteger(10000, 99999));
+	tablica[i].iloscKoni = generujInteger(70, 200);
+}
+
+void dodajLosoweAuto(Auto** tablica, int i) {
+	tablica[i]->marka = Marki[generujInteger(0, 3)];
+	tablica[i]->numerRejestracyjny = Rejestracje[generujInteger(0, 3)] + " " + to_string(generujInteger(10000, 99999));
+	tablica[i]->iloscKoni = generujInteger(70, 200);
+}
+
+// zmienna liczaca ilosc cyfer dla danej liczby, by moc obliczyc ilosc spacji przed nia dla wygladu
 int policzCyfry(int number) {
 	int count = 0;
 
@@ -54,8 +83,10 @@ int policzZnaki(string string) {
 */
 
 
-// ZAD 7
+// ZAD 8
 // Gra w poscig
+
+// funkcja wyswietlajaca zawartosc tablicy dwuwymiarowej "gra", czyli naszych plansz do gier
 void displayGra(char gra[11][11]) {
 	for (int i = 0; i < 11; i++) {
 		for (int j = 0; j < 11; j++) {
@@ -69,6 +100,7 @@ void displayGra(char gra[11][11]) {
 	cout << "\n========================================\n";
 }
 
+// funkcja odpowiadajaca za wybor nastepnego ruchu celu
 void ucieczkaCelu(char gra[11][11], int& playerRow, int& playerCol, int& targetRow, int& targetCol) {
 
 	if (!(playerRow == targetRow && playerCol == targetCol)) {
@@ -125,6 +157,7 @@ void ucieczkaCelu(char gra[11][11], int& playerRow, int& playerCol, int& targetR
 	}
 }
 
+// funkcja ktora wykonuje akcje po odczytu klawisza i dodatkowo uruchamia funkcje ucieczki celu dla zaktualizowanych danych pozycji gracza
 void nextMove(char gra[11][11], int key, int& playerRow, int& playerCol, int& targetRow, int& targetCol) {
 	switch (key) {
 	case KEY_UP:
@@ -162,9 +195,10 @@ void nextMove(char gra[11][11], int key, int& playerRow, int& playerCol, int& ta
 	}
 }
 
-void zad7() {
+void zad8() {
 	char gra[11][11] = {};
 
+	// po zainicjowaniu tablicy "gra" wpisujemy w kazde jej miejsce znak oznaczajacy puste pole
 	for (int i = 0; i < 11; i++) {
 		for (int j = 0; j < 11; j++) {
 			gra[i][j] = 'o';
@@ -209,12 +243,13 @@ void zad7() {
 			break;
 		}
 
+		// licznik ruchow inkrementowany co kazdy przycisk
 		moveCounter++;
 
 		if (playerRow == targetRow && playerCol == targetCol) {
 			run = false;
 			cout << "\n========================================\n\n";
-			cout << "    Koniec gry!\n";
+			cout << "    Koniec gry!\n"; // dzielimy na 2, bo funkcja "_getch()" zwraca dwie wartosci, a my uzywamy tylko jednej
 			cout << "    Udalo ci sie dogonic cel w: " << floor(moveCounter / 2) << " ruchach!\n\n";
 			cout << "    Nacisnij ENTER by wróciæ do menu\n";
 			cout << "\n========================================\n";
@@ -247,6 +282,8 @@ public:
 	int lenght;
 	int points = 0;
 
+	// vector, czyli dynamiczna tablica o typie pair dwoch zmiennych typu int, dla tego przypadku idealnie, bo
+	// potrzebujemy przechowywac w niej informacje o wierszu i kolumnie danego elementu
 	vector<pair<int, int>> ogonVector;
 
 	void render(char gra[11][11]) {
@@ -325,6 +362,9 @@ public:
 			}
 			break;
 		}
+		// sprawdzamy czy pozycja gracza znajduje sie na miejscu jedzenia i wtedy przynajemu mu punkt,
+		// dodajemy dlugosc do ogona, tworzymy nowe jedzenie i wyswietlamy ponownie plansze, by gracz
+		// widzial nowy cel od razu po zjedzeniu
 		if (row == food.row && col == food.col) {
 			points++;
 			lenght++;
@@ -334,9 +374,9 @@ public:
 	}
 };
 
-// ZAD 8
+// ZAD 9
 // Gra w snake
-void zad8() {
+void zad9() {
 	char gra[11][11] = {};
 
 	for (int i = 0; i < 11; i++) {
@@ -345,18 +385,23 @@ void zad8() {
 		}
 	}
 
+	// deklarujemy obiekt player klasy Player i obiekt food klasy Food
 	Player player;
 	Food food;
 
 	int key = 0;
+
+	// losujemy pozycje dla gracza z odstepem od krawedzi planszy by ogon mial miejsce
 	player.row = generujInteger(1, 9);
 	player.col = generujInteger(1, 9);
+
 	player.lenght = 2;
+
+	// dodajemy ogon w wierszu nizej
 	player.ogonVector.push_back(make_pair(player.row - 1, player.col));
-	food.row = 0;
-	food.col = 0;
+
+	// zmienna sterujaca petla gry
 	bool run = true;
-	int moveCounter = 0;
 
 	player.render(gra);
 	food.render(gra);
