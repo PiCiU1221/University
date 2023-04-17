@@ -33,7 +33,7 @@ void generateRandomizedOwnersAndListings(Dealership& dealership) {
 	}
 
 	cout << "\n========================================================\n\n";
-	cout << "    Wygenerowano " << randomNumberOfOwners << " w³aœcicieli i " << randomNumberOfListings << " ogloszeñ" << endl;
+	cout << "    Generated " << randomNumberOfOwners << " owners and " << randomNumberOfListings << " listings" << endl;
 	cout << "\n    Press ENTER to go back to the menu\n";
 	cout << "\n========================================================\n";
 	cin.ignore();
@@ -161,8 +161,8 @@ void deleteOwnerByUser(Dealership& dealership) {
 
 // Function that displays the Owners objects data
 void displayOwners(Dealership& dealership) {
-	cout << "\n| Index |       Nazwa       | Liczba og³oszeñ |   Miasto  |" << endl;
-	cout << "------------------------------------------------------------" << endl;
+	cout << "\n| Index |       Name        | Number of listings |    City   |" << endl;
+	cout << "---------------------------------------------------------------" << endl;
 
 	int ownersSize = dealership.getOwnersSize();
 	for (int i = 0; i < ownersSize; i++) {
@@ -183,7 +183,7 @@ void displayOwners(Dealership& dealership) {
 		int ownerListings = dealership.countOwnersListings(i);
 		int cyfryCount = countNumbers(ownerListings);
 
-		for (int j = 1; j <= 15 - cyfryCount; j++) {
+		for (int j = 1; j <= 18 - cyfryCount; j++) {
 			cout << " ";
 		}
 		cout << ownerListings << " | ";
@@ -217,8 +217,8 @@ void addListingByUser(Dealership& dealership) {
 	for (int i = 0; i < ownersSize; i++) {
 		searchedIndexes.push_back(i);
 
-		cout << "\n| Index |       Nazwa       | Liczba og³oszeñ |   Miasto  |" << endl;
-		cout << "------------------------------------------------------------" << endl;
+		cout << "\n| Index |       Name        | Number of listings |    City   |" << endl;
+		cout << "---------------------------------------------------------------" << endl;
 
 		int ownersSize = dealership.getOwnersSize();
 		for (int i = 0; i < ownersSize; i++) {
@@ -239,7 +239,7 @@ void addListingByUser(Dealership& dealership) {
 			int ownerListings = dealership.countOwnersListings(i);
 			int cyfryCount = countNumbers(ownerListings);
 
-			for (int j = 1; j <= 15 - cyfryCount; j++) {
+			for (int j = 1; j <= 18 - cyfryCount; j++) {
 				cout << " ";
 			}
 			cout << ownerListings << " | ";
@@ -393,8 +393,8 @@ void editListing(Dealership& dealership) {
 		searchedIndexes.push_back(i);
 
 		if (flag == false) {
-			cout << "\n| Index |     Owner    |    Brand   |    Model   |  Cena  |" << endl;
-			cout << "-------------------------------------------------------------" << endl;
+			cout << "\n| Index |     Owner    |    Brand   |    Model   |  Price  |" << endl;
+			cout << "--------------------------------------------------------------" << endl;
 		}
 
 		// using the [] overloaded operator
@@ -432,7 +432,7 @@ void editListing(Dealership& dealership) {
 
 		size_t priceSize = countNumbers(listing_->getPrice());
 
-		for (int j = 1; j <= 6 - priceSize; j++) {
+		for (int j = 1; j <= 7 - priceSize; j++) {
 			cout << " ";
 		}
 		cout << listing_->getPrice() << " | " << endl;
