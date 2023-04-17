@@ -27,7 +27,7 @@ void menu(Dealership& dealership) {
 		cout << "   4 ] Display owners\n";
 		cout << "   5 ] Add a new listing\n";
 		cout << "   6 ] Edit a listing\n";
-		cout << "   7 ]  Delete a listing\n";
+		cout << "   7 ] Delete a listing\n";
 		cout << "   8 ] Display listings\n";
 		cout << "   9 ] Search through listings\n";
 		cout << "  10 ] Display amount of owners and listings\n\n";
