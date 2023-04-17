@@ -1,0 +1,156 @@
+# ZAD 1
+# Wykorzystując zapis macierzowy wyznaczyć rozwiązanie układu równań:
+
+C = matrix(c(-15,-4,12,13,7,5,-19,3,-17,9,-4,-11,19,-13,1,-5),4,4)
+
+D = matrix(c(300,-109,7,236),4,1)
+
+solve(C,D)
+
+
+# ZAD 2
+# Wybrać spośród liczb od 18 do 11052 wielokrotności liczby 6. Skonstruować wektor czwartych potęg wybranych liczb i
+# zliczyć ile wśród nich jest liczb podzielnych przez 10, podzielnych przez 17 oraz podzielnych przez 10 i 17
+
+# wektor czwartych potęg wybranych liczb
+w = seq(18,11052,by = 6)^4
+
+# podzielne przez 10
+summary(factor(w%%10 == 0))
+
+# podzielne przez 17
+summary(factor(w%%17 == 0))
+
+# podzielne przez 10 i 17
+summary(factor(w%%10 == 0 & w%%17 == 0))
+
+
+# ZAD 3
+# Doświadczenie polega na rzucaniu kostką do gry tak długo, aż wypadnie piątka lub szóstka. Obliczyć prawdopodobieństwo, że:
+
+# a) trzeba wykonac 4 rzuty
+dgeom(3,1/3)
+
+# b) 5 lub 6 oczek nie pojawi sie w pięciu kolejnych rzutach
+pgeom(4,1/3,F)
+
+
+# ZAD 4
+# Zmienna X ma rozklad normalny N(-4,14). Obliczyć prawdopodobieństwo
+
+# a)
+# P(|4x-4| >= 195) = P(4x-4 <= -195) + P(4x-4 >= 195) = 
+# P(4x <= -191) + P(4x >= 199) =
+# P(x <= -191/4) + P(x >= 199/4)
+
+m = -4
+sig = 14
+
+pnorm(-191/4, m, sig) + pnorm(199/4, m ,sig, F)
+
+# b)
+# P(|X+9| < 3) = P(-3 < x+9 < 3) = P(-12 < x < -6)
+pnorm(-6, m, sig) - pnorm(-12, m, sig)
+
+
+# ZAD 5
+# Wyznaczyc kwantyle
+# n(0.36)
+qnorm(0.36)
+
+# chi kwadrat(0.92;44);
+qchisq(0.92,44)
+
+# t(0.36,24)
+qt(0.36,24)
+
+# F(0.98;40;9)
+qf(0.98,40,9)
+
+
+# ZAD 6
+# W pewnej firmie wykonuje sie rocznie około miliona operacji księgowania. Wiadomo, że frakcja księgowań niepoprawnych
+# wynosi 0.3%. Przy kontroli przedsiębiorstwa losuje się w celu dokładnego sprawdzenia 2300 pozycji księgowania
+# (losowanie ze zwracaniem). Obliczyć prawdopodobieństwo, że przy kontroli zostanie znalezionych:
+# a) 7 źle zaksięgowanych pozycji
+
+dbinom(7,2300,0.003)
+
+# rozklad poissona
+
+dpois(7,2300*0.003)
+
+# b) przynajmniej 5 źle zaksięgowane pozycje
+
+n = 2300
+p = 0.003
+q = 1 - p
+
+pbinom(5,n,p,F)
+
+# przybliżenie z CTG z poprawką
+pnorm(5.5, n*p, sqrt(n*p*q), F)
+
+# ZAD 7
+# Czas dojazdu do pracy pracowników AGH ma rozkład normalny o wartości oczekiwanej równej 35 min. Wiadomo, że 80%
+# pracowników dojeżdza do pracy w czasie dłuższym niż 23 min. Wyznaczyć
+
+# a) nieznany parametr rozkładu zm. losowej
+
+# A = [ 1 qnorm(p1)]    B = [ a1 ]
+#     [ 1 qnorm(p2)]        [ a2 ]
+
+# P(X <= 35) = 0.5
+# P(X <= 23) = 0.2
+
+# (35 - m) / sig = qnorm(0.5)
+# (23 - m) / sig = qnorm(0.2)
+
+# m + sig * qnorm(0.5) = 35
+# m + sig * qnorm(0.2) = 23
+
+A = matrix(c(1,1,qnorm(0.5),qnorm(0.2)),2,2)
+B = matrix(c(35,23),2,1)
+
+m = solve (A,B) [1]
+sig = solve (A,B) [2]
+
+# b) wartość graniczną czsu dojazdu 25% osób nadłużej dojeżdzających do pracy
+
+qnorm(0.75, m, sig)
+
+# c) liczbę pracowników spośród 250 losowo wybranych, których poświęcają na dojazd nie więcej niż 20 minut
+
+pnorm(20, m, sig) * 250
+
+
+# ZAD 8
+# Zbadano czas oczekiwania po odbiór awizowanej w Szczecinie na poczcie przy ul. Dworcowej i uznano, że może być
+# aproksymowany za pomocą rozkładu normalnego. Wiadomo, że około 35% klientów nie czeka dłużej niż 5 minut oraz
+# 12% czeka co najmniej 13 minut. Wyznaczyć:
+
+# m = ?, sig = ?
+
+# A = [ 1 qnorm(p1)]    B = [ a1 ]
+#     [ 1 qnorm(p2)]        [ a2 ]
+
+# P(X <= 5) = 0.35
+# P(X <= 13) = 0.88
+
+# (5 - m) / sig = qnorm(0.35)
+# (13 - m) / sig = qnorm(0.88)
+
+# m + sig * qnorm(0.35) = 5
+# m + sig * qnorm(0.88) = 13
+
+A = matrix(c(1,1,qnorm(0.35),qnorm(0.88)),2,2)
+B = matrix(c(5,13),2,1)
+
+m = solve (A,B) [1]
+sig = solve (A,B) [2]
+
+# 1. procent klientów, którzy będą czekać od 7 do 15 minut
+pnorm(15,m,sig) - pnorm(7,m,sig)
+
+# 2. wartość progową czasu oczekiwania 18% najkrócej czekających klientóW
+qnorm(0.18, m, sig)
