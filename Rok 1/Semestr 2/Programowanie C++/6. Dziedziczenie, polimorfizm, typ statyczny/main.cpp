@@ -113,7 +113,7 @@ int main() {
 	srand((unsigned int)time(nullptr));
 
 	// Create an object dealership of a type Dealership to use in the menu function
-	static Dealership dealership;
+	Dealership& dealership = Dealership::instance();
 
 	while (true) {
 		menu(dealership);

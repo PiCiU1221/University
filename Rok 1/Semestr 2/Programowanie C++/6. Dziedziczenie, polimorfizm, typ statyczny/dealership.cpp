@@ -6,10 +6,9 @@ int Dealership::typeCounter = 0;
 
 Dealership::Dealership() {}
 
-Dealership::Dealership(const Dealership& other) {
-	owners = other.owners;
-	carListings = other.carListings;
-	motorcycleListings = other.motorcycleListings;
+Dealership& Dealership::instance() {
+	static Dealership INSTANCE;
+	return INSTANCE;
 }
 
 Dealership::~Dealership() {
@@ -428,13 +427,4 @@ Listing* Dealership::operator [](const size_t k) {
 		size_t motorcycleIndex = k - carListings.size();
 		return motorcycleListings[motorcycleIndex];
 	}
-}
-
-// Overloading operator '=' of a 'Dealership' class
-Dealership& Dealership::operator=(const Dealership& right) {
-	if (&right != this) {
-		this->Dealership::~Dealership();
-		this->Dealership::Dealership(right);
-	}
-	return *this;
 }

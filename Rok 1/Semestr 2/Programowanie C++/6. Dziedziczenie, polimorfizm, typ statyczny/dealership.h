@@ -14,10 +14,12 @@ class Dealership {
 	std::vector<Listing*> motorcycleListings;
 	vehicleType typeChoice = CAR;
 	static int typeCounter;
-public:
 	Dealership();
-	Dealership(const Dealership& other);
+public:
 	~Dealership();
+	static Dealership& instance();
+	Dealership(Dealership const&) = delete;
+	void operator=(Dealership const&) = delete;
 
 	// Methods that are using arrays of pointers
 	void addOwner(std::string name, std::string city, std::string ulica, int numer);
@@ -105,7 +107,6 @@ public:
 	friend std::ofstream& operator<<(std::ofstream&, const Dealership&);
 	friend std::ifstream& operator>>(std::ifstream& in, Dealership& dealership);
 	Listing* operator [](const size_t);
-	Dealership& operator=(const Dealership&);
 };
 
 #endif // DEALERSHIP_H
