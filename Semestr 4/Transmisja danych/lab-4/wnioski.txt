@@ -1,0 +1,19 @@
+ASK:
+Szerokość pasma 3 dB: 77.0 Hz
+Szerokość pasma 6 dB: 259.0 Hz
+Szerokość pasma 12 dB: 671.0 Hz
+
+PSK:
+Szerokość pasma 3 dB: 77.0 Hz
+Szerokość pasma 6 dB: 200.0 Hz
+Szerokość pasma 12 dB: 415.0 Hz
+
+FSK:
+Szerokość pasma 3 dB: 54.0 Hz
+Szerokość pasma 6 dB: 116.0 Hz
+Szerokość pasma 12 dB: 241.0 Hz
+
+Testowanie
+1010100 1100101 1110011 1110100 1101111 1110111 1100001 1101110 1101001 1100101
+
+Kluczowanie z przesuwem częstotliwości ma znacznie mniejszą szerokość pasma od ASK i PSK na całym widmie. ASK i PSK mają bardzo podobną szerokość na poziomie 3 dB przy moich danych, natomiast szerokość PSK jest mniejsza od ASK na pozostałych poziomach 6 dB i 12 dB.

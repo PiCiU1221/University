@@ -1,0 +1,3 @@
+Proces demodulacji jest najprostszy dla sygnału PSK, gdyż mamy pojedynczy sygnał p, a nie dwa jak w przypadku FSK, i nie musimy porównywać go z h, jak w przypadku ASK, tylko sprawdzamy, czy jest mniejszy od 0.
+
+Wyznaczenie odpowiedniego h dla ASK może być problematyczne i trzeba na to zwracać uwagę, by otrzymać poprawne wyniki.

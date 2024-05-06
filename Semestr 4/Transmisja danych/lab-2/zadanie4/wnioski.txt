@@ -1,0 +1,15 @@
+x signal: DFT time: 7570 ms, FFT time: 52 ms
+y signal: DFT time: 6148 ms, FFT time: 17 ms
+z signal: DFT time: 4291 ms, FFT time: 17 ms
+v signal: DFT time: 4316 ms, FFT time: 18 ms
+u signal: DFT time: 1089 ms, FFT time: 11 ms
+b1 signal: DFT time: 9230 ms, FFT time: 8 ms
+b2 signal: DFT time: 9208 ms, FFT time: 15 ms
+b3 signal: DFT time: 9152 ms, FFT time: 23 ms
+
+Total time for DFT: 51004 ms
+Total time for FFT: 161 ms
+
+FFT jest znacznie szybszy od DFT.
+
+Dzięki wykreślaniu widma amplitudowego jesteśmy w stanie zidentyfikować jakie częstotliwości występują w sygnale. Pozwala to na wykrycie wartości dominujących i mówi to dużo o charakterystyce sygnału. Informacje te możemy później wykorzystać np. do usuwania szumów.

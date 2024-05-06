@@ -1,0 +1,16 @@
+Modulacja amplitudowa:
+Szerokość pasma 3 dB: 74.0 Hz
+Szerokość pasma 6 dB: 326.5 Hz
+Szerokość pasma 12 dB: 1350.0 Hz
+
+Modulacja fazowa:
+Szerokość pasma 3 dB: 415.5 Hz
+Szerokość pasma 6 dB: 583.5 Hz
+Szerokość pasma 12 dB: 1709.0 Hz
+
+Modulacja częstotliwościowa:
+Szerokość pasma 3 dB: 64.0 Hz
+Szerokość pasma 6 dB: 261.0 Hz
+Szerokość pasma 12 dB: 1580.0 Hz
+
+Z obliczeń szerokości pasma dla zmodulowanego sygnału można wywnioskować, że modulacja amplitudowa ma najwęższe pasmo, modulacja częstotliwościowa ma trochę szersze od amplitudowej. Natomiast modulacja fazowa mocno odstaje od reszty i jest bardzo szeroka od 3 db do 6 db w porównaniu do dwóch pozostałych.
