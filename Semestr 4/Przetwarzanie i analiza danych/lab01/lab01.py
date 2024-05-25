@@ -1,8 +1,3 @@
-# LAB 01
-# gr.220A
-# pp53828
-# Piotr Pietrusewicz
-
 import numpy as np
 
 # TABLICE
