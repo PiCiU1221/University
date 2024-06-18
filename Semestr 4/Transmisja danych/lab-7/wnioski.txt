@@ -1,0 +1,40 @@
+Dodanie szumu białego do moich sygnałów, dla alfa w przedziale od 0 do 1, nie przynosi żadnej utraty danych. Wiadomości dalej przetwarzane są bezbłednie. Podczas testowania alfa o rozmiarze powyżej 3 dopiero powoduje błędy dla ASK, powyżej 20 dla FSK i od 23 dla PSK. Kluczowanie amplitudowe jest najbardziej narażone na szum, gdyż zmienia on losowo wysokość amplitudy, na co szczególnie jest podatna ta metoda kluczowania.
+Tabela z wynikami:
+
+
+                 ASK         PSK         FSK
+alfa = 0,0:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,1:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,2:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,3:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,4:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,5:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,6:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,7:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,8:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 0,9:   BER: 0,00   BER: 0,00   BER: 0,00 
+alfa = 1,0:   BER: 0,00   BER: 0,00   BER: 0,00
+
+
+Z kolei, dodanie tłumienia z beta w przedziale od 0 do 10 znacząco wpływa na wyniki ASK. Przy beta równym 1 wyniki są bardzo złe, podczas gdy PSK i FSK radzą sobie doskonale, gdyż zmiana aplitudy na tym przedziale nie wpływa na ich działanie, gdyż przy demodulacji porównywane są sąsiednie wartości, a nie jak w przypadku ASK globalna stała.
+Tabela z wynikami:
+
+
+                  ASK         PSK         FSK
+beta =  0,0:   BER: 0,00   BER: 0,00   BER: 0,00 
+beta =  1,0:   BER: 0,50   BER: 0,00   BER: 0,00 
+beta =  2,0:   BER: 0,56   BER: 0,00   BER: 0,00 
+beta =  3,0:   BER: 0,56   BER: 0,00   BER: 0,00 
+beta =  4,0:   BER: 0,59   BER: 0,00   BER: 0,00 
+beta =  5,0:   BER: 0,60   BER: 0,00   BER: 0,00 
+beta =  6,0:   BER: 0,60   BER: 0,00   BER: 0,00 
+beta =  7,0:   BER: 0,60   BER: 0,00   BER: 0,00 
+beta =  8,0:   BER: 0,60   BER: 0,00   BER: 0,00 
+beta =  9,0:   BER: 0,63   BER: 0,00   BER: 0,00 
+beta = 10,0:   BER: 0,63   BER: 0,00   BER: 0,00
+
+
+Pierwsza konfiguracja I+II generuje błędy tylko dla ASK dla alfa w przedziale od 0 do 1 i beta w przedziale od 0 do 10.
+Druga konfiguracja II+I od beta większego od 5 generuje błędy także dla PSK i FSK, które są na przedziale ok. 25% złych wartości, co i tak jest znacznie lepsze od 50% ASK, które oznacza praktycznie całkowicie błędne dane.
+
+Dzieje się tak dlatego, że jeśli najpierw wytłumimy sygnał, to zmniejszy on znacząco moc sygnału, a szum ma stałą amplitude wymnożoną przez pseudolosową liczbę w naszym kodzie i będzie on znacznie skuteczniej zakłócał sygnał.

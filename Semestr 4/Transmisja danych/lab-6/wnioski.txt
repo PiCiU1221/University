@@ -1,0 +1,11 @@
+Kodowanie Hamminga pozwala na poprawne odtworzenie pierwotnego sygnału w przypadku, gdy jeden bit ma złą wartość. Robi to za pomocą nadmiarowych bitów.
+
+W przypadku kodowania Hamminga 7,4, 3 bity parzystości są nadmiarowe i można za ich pomocą przywrócić sygnał do pierwotnej wartości.
+
+Gdy chcemy zdekodować sygnał 7,4, to liczymy 3 zmienne, które dają nam binarnie pozycję bitu, który należy zanegować, by sygnał był poprawny.
+
+Dla kodowania Hamminga 15,11 użyliśmy innej strategii, a mianowicie macierzy generującej do zakodowania bitów, którą mnożymy z bitami informacyjnymi.
+
+Otrzymany zakodowany wynik ma 4 bity parzystości na początku wyniku, a pozostałe 11 bitów jest bitami informacyjnymi.
+
+Kiedy chcemy zdekodować otworzymany wynik, musimy wygenerować sobie macierz parzystości, którą mnożymy przez zakodowany sygnał. Wynikiem tej operacji będzie bitowa reprezentacja bitu z błędem, ale dla standardowej kolejności bitowej dla kodu Hamminga, czyli bity parzystości leżą na pozycjach potęgami liczby 2. Musimy po obliczeniu pozycji złego bitu zamienić tę kolejność na standardową i dopiero wtedy dokonać korekcji niepoprawnego bitu. Następnie wyciągamy z tego tylko bity informacyjne i zwracamy w wyniku.
