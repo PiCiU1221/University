@@ -1,3 +1,3 @@
-# Studia
+# University
 
-This repository is currently used for posting my college work.
+This repository contains my university assignments and projects.
