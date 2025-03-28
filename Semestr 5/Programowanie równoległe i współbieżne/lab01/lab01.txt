@@ -1,0 +1,28 @@
+Procesor: Ryzen 5 5600h,
+Wirtualna maszyna 6 wątków,
+Wykorzystanie procesora w wirtualnej maszynie 100%,
+
+N = 1000
+
+Bez transponowania:
+1   - 5806 ms
+2   - 3384 ms
+4   - 1883 ms
+8   - 1552 ms
+16  - 1478 ms
+32  - 1384 ms
+64  - 1312 ms
+128 - 1255 ms
+256 - 1162 ms
+
+Po transponowaniu:
+1   - 5620 ms
+2   - 3013 ms
+4   - 1614 ms
+8   - 1448 ms
+16  - 1333 ms
+32  - 1242 ms
+64  - 1192 ms
+128 - 1127 ms
+256 - 1048 ms
+
