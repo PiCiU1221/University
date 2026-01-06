@@ -1,0 +1,37 @@
+// lab08
+
+time ./password_cracker '$6$salt$zkEDNvVcFGuykOJhCtLWrPZOOWsLHk.M257L2X25iN.dj6xfaLwyaybCkYctYM4Ovxr6DTJrgalNA8TXbTUP/0' 'out.txt'
+time ./password_cracker '$6$salt$D4fGkJaqjFqhkyCmBo2QNIZHC/FDvmz3AwxbcgxAkL2A5Yfge/kTOZjzXc4JYayGqQOmWafuUk8.LEa9uEEZ4/' 'out.txt'
+time ./password_cracker '$6$salt$t37XtDt/Bbdk5BdBxo3ee5EQ56RlCcZeMRU9lhAh82JWih9xks/dk6drl//INdlZzXRFyoKKYuJbXAfyPCZ8u0' 'out.txt'
+
+10000 linia:
+time ./password_cracker '$6$salt$coL9IuMYbJD7NLsEFzH6NpQxshbOXf8alauxQqrs6VDgRE1eEytCqSoZII2B8Sg1R/sDm48zu385ZYDDjkR0h/' 'out.txt'
+
+
+// lab09
+./hash_generator ';;;;;;' 'salt'
+$6$salt$zkEDNvVcFGuykOJhCtLWrPZOOWsLHk.M257L2X25iN.dj6xfaLwyaybCkYctYM4Ovxr6DTJrgalNA8TXbTUP/0
+
+// PLIK out3.txt 5 000 linii
+
+// pierwsze haslo
+./manager 'out3.txt' '$6$salt$zkEDNvVcFGuykOJhCtLWrPZOOWsLHk.M257L2X25iN.dj6xfaLwyaybCkYctYM4Ovxr6DTJrgalNA8TXbTUP/0' 15
+
+// ostatnie haslo
+./manager 'out3.txt' '$6$salt$cO0HpDVbeQJp2jRaiuUc2BhEfKnmGwOyOqfnS1mY8/6JjHCMWVHX8HS.S0wW6f2QWxekL8nu3fxzc5YCG9mwV/' 15
+
+// srodkowe haslo
+./manager 'out3.txt' '$6$salt$Us8IW7mULB.hrBpARtVTk21AlvwHU6iDbpOajr1z1BhhWtMm8E0usuW4tbeRju7/qQMTr0WZt93pl2t2SoSX9/' 30
+
+// PLIK out2.txt 20 000 linii
+
+// ostatnie haslo
+./manager 'out2.txt' '$6$salt$gDCgKS7vpGf589qWOLAgRq2nebpFtSB80djHj1AGzDmmggFRNWLYVcR9RJqDs88jkRC55PIU4mvwAybn.kMA10' 30
+
+// PLIK out.txt 100 000 linii
+
+// srodek
+./manager 'out.txt' '$6$salt$D4fGkJaqjFqhkyCmBo2QNIZHC/FDvmz3AwxbcgxAkL2A5Yfge/kTOZjzXc4JYayGqQOmWafuUk8.LEa9uEEZ4/' 100
+
+// ostatnie haslo
+./manager 'out.txt' '$6$salt$t37XtDt/Bbdk5BdBxo3ee5EQ56RlCcZeMRU9lhAh82JWih9xks/dk6drl//INdlZzXRFyoKKYuJbXAfyPCZ8u0' 100
