@@ -1,0 +1,134 @@
+module mathOps
+contains
+  attributes(device) function f(x)
+    implicit none
+    real, intent(in) :: x
+    real :: f
+
+    f = sin(x) + cos(x)
+  end function f
+  
+  attributes(global) subroutine findExtremes(samples, xd, xg)
+    implicit none
+    real, intent(out) :: samples(:)
+    real, value :: xd, xg
+    
+    integer :: i, n
+    real :: x, step
+
+    n = size(samples)
+    i = blockDim%x * (blockIdx%x - 1) + threadIdx%x
+
+    if (i <= n) then
+        step = (xg - xd) / real(n)
+        x = xd + (i - 1) * step
+        samples(i) = f(x)
+    end if
+  end subroutine findExtremes
+
+  attributes(global) subroutine monteCarlo(x_rand, y_rand, m, xd, xg, ymin, ymax)
+    implicit none
+    real, intent(in) :: x_rand(:), y_rand(:)
+    integer, device :: m
+    real, value :: xd, xg, ymin, ymax
+    
+    integer :: i, n, temp
+    real :: x, y, val, width, height
+
+    n = size(x_rand)
+    i = blockDim%x * (blockIdx%x - 1) + threadIdx%x
+
+    if (i <= n) then
+        width = xg - xd
+        height = (ymax + 1.0) - (ymin - 1.0)
+
+        x = xd + x_rand(i) * width
+        y = (ymin - 1.0) + y_rand(i) * height
+
+        val = f(x)
+
+        if (val > 0.0) then
+            if (y > 0.0 .and. y < val) then
+                temp = atomicadd(m, 1)
+            end if
+        
+        else if (val < 0.0) then
+             if (y < 0.0 .and. y > val) then
+                temp = atomicadd(m, -1)
+             end if
+        end if
+    end if
+  end subroutine monteCarlo
+end module mathOps
+
+program test
+  use mathOps
+  use cudafor
+  implicit none
+
+  integer, parameter :: N_SAMPLES = 1000
+  integer, parameter :: N_POINTS = 1000000
+
+  character(len=100) :: func_str, arg_buffer
+  real :: xd, xg
+  real :: ymin, ymax
+
+  real :: samples_host(N_SAMPLES)
+  real :: x_rand(N_POINTS), y_rand(N_POINTS)
+  integer :: M_host
+  real :: integral_result
+
+  real, device :: samples_dev(N_SAMPLES)
+  real, device :: x_rand_d(N_POINTS), y_rand_d(N_POINTS)
+  integer, device :: M_dev
+
+  type(dim3) :: grid, tBlock
+
+  if (command_argument_count() < 3) then
+      print *, "Blad! Uzycie: ./zad02 'wzor' xd xg"
+      stop
+  end if
+
+  call get_command_argument(1, func_str)
+  call get_command_argument(2, arg_buffer)
+  read(arg_buffer, *) xd
+  call get_command_argument(3, arg_buffer)
+  read(arg_buffer, *) xg
+
+  if (xg <= xd) then
+     print *, "Blad! Gorna granica (xg) musi byc wieksza od dolnej (xd)!"
+     stop
+  end if
+
+  print *, "Funkcja: ", trim(func_str)
+  print *, "Przedzial: [", xd, ", ", xg, "]"
+
+  tBlock = dim3(1024, 1, 1)
+  grid = dim3(ceiling(real(N_SAMPLES)/tBlock%x), 1, 1)
+
+  call findExtremes<<<grid, tBlock>>>(samples_dev, xd, xg)
+
+  samples_host = samples_dev
+  ymin = minval(samples_host)
+  ymax = maxval(samples_host)
+
+  print *, "Pudelko Y: od ", ymin - 1.0, " do ", ymax + 1.0
+
+  call random_number(x_rand)
+  call random_number(y_rand)
+
+  x_rand_d = x_rand
+  y_rand_d = y_rand
+  M_dev = 0
+
+  grid = dim3(ceiling(real(N_POINTS)/tBlock%x), 1, 1)
+  call monteCarlo<<<grid, tBlock>>>(x_rand_d, y_rand_d, M_dev, xd, xg, ymin, ymax)
+
+  M_host = M_dev
+  integral_result = (xg - xd) * (ymax - ymin + 2.0) * real(M_host) / real(N_POINTS)
+
+  print *, "--- WYNIKI ---"
+  print *, "Liczba trafien (M): ", M_host
+  print *, "WYNIK CALKI:        ", integral_result
+  
+end program test

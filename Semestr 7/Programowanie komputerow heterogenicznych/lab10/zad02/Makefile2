@@ -1,0 +1,5 @@
+nvrtc_sample : nvrtc_sample.c
+	gcc -I /usr/local/cuda/targets/x86_64-linux/include/ nvrtc_sample.c -lnvrtc -lcuda -o nvrtc_sample
+
+clean:
+	rm nvrtc_sample

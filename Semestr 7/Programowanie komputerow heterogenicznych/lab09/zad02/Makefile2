@@ -1,0 +1,5 @@
+zad02: zad02.cuf
+	nvfortran zad02.cuf -o zad02
+
+clean:
+	rm -f zad02 *.mod

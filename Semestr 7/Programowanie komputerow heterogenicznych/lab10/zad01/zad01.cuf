@@ -1,0 +1,59 @@
+module deviceOps
+contains
+  attributes(global) subroutine countHits(x, y, m)
+    implicit none
+    real, intent(in) :: x(:), y(:)
+    integer, device :: m
+    integer :: i, n, temp
+
+    n = size(x)
+    i = blockDim%x * (blockIdx%x - 1) + threadIdx%x
+
+    if (i <= n) then
+        if (x(i)**2 + y(i)**2 <= 1.0) then
+            temp = atomicadd(m, 1)
+        end if
+    end if
+  end subroutine countHits
+end module deviceOps
+
+program test
+  use deviceOps
+  use cudafor
+  implicit none
+
+  integer, parameter :: N = 1000000
+  integer :: i
+
+  integer :: M_host
+  integer, device :: M_dev
+
+  real :: x(N), y(N)
+  real, device :: x_d(N), y_d(N)
+
+  real :: pi_val
+  type(dim3) :: grid, tBlock
+
+  tBlock = dim3(1024,1,1)
+  grid = dim3(ceiling(real(N)/tBlock%x),1,1)
+
+  call random_number(x)
+  call random_number(y)
+
+  x = (x * 2.0) - 1.0
+  y = (y * 2.0) - 1.0
+
+  x_d = x
+  y_d = y
+  M_dev = 0
+
+  call countHits<<<grid, tBlock>>>(x_d, y_d, M_dev)
+
+  M_host = M_dev
+  pi_val = (4.0 * real(M_host)) / real(N)
+
+  print *, "Liczba punktów N: ", N
+  print *, "Liczba trafień M: ", M_host
+  print *, "Obliczone Pi:     ", pi_val
+  print *, "Prawdziwe Pi:     ", 3.14159265
+end program test

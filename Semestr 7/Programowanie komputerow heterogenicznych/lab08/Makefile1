@@ -1,0 +1,10 @@
+all: driver 
+
+driver: kernel.cubin driver.c
+	gcc -I /usr/local/cuda/include driver.c -l cuda -lm -o driver
+
+kernel.cubin: kernel.cu
+	nvcc --cubin -arch=sm_80 kernel.cu
+
+clean:
+	rm kernel.cubin driver
