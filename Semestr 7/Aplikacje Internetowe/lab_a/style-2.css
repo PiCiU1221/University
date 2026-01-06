@@ -1,0 +1,81 @@
+body {
+    font-family: Georgia, serif;
+    background-color: #e9f5ec;
+    color: #2f3e2f;
+    margin: 0;
+    padding: 80px;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #3c6e47;
+    color: #fff;
+    text-align: center;
+    padding: 2em 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+h2 {
+    color: #2d5a34;
+    background-color: #c8e0cc;
+    padding: 0.5em;
+    border-left: 5px solid #3c6e47;
+    margin: 2em 0 1em;
+}
+
+h3 {
+    color: #2d5a34;
+    margin-top: 1.5em;
+    padding-bottom: 0.2em;
+    border-bottom: 3px solid #7fb685;
+    font-weight: bold;
+}
+
+p {
+    max-width: 800px;
+    margin: 0 auto 1em;
+    padding: 0 1em;
+}
+
+ul {
+    max-width: 800px;
+    margin: 1.5em auto;
+    padding-left: 2em;
+    list-style: none;
+}
+
+ul li {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 0 3px;
+    padding-left: 30px;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #2f4f2f;
+}
+
+footer {
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 4em 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    width: 100%;
+    min-height: 250px;
+    font-size: 40px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+}

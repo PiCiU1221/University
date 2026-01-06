@@ -1,0 +1,88 @@
+body {
+    font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+    background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+    color: #222;
+    margin: 0;
+    padding: 100px;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 2em 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 2em;
+    transform: rotate(-2deg);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.5em;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    border-bottom: 3px dashed #ff4d4d;
+    padding-bottom: 5px;
+}
+
+p {
+    max-width: 800px;
+    margin: 0 auto 1em auto;
+    padding: 0 1em;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+ul {
+    max-width: 800px;
+    margin: 1em auto;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    list-style: "🍰 ";
+}
+
+ul li {
+    margin: 0.5em 0;
+}
+
+footer {
+    background-image: url('https://media.istockphoto.com/id/1466057420/vector/80s-retro-futuristic-sci-fi-illustration-retrowave-video-game-landscape-with-neon-grids.jpg?s=612x612&w=0&k=20&c=qp7sWF94R7KzFqNXoJANSF408lkHKigeLnWkd1TDvk0=');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 3em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    margin-top: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+footer h1, footer p, footer span {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+}

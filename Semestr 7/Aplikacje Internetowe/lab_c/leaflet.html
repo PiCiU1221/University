@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps with Leaflet</title>
+    <link rel="stylesheet" href="leaflet-1.7.1/leaflet.css" />
+    <script src="leaflet-1.7.1/leaflet-src.js"></script>
+    <script src="leaflet-1.7.1/leaflet-providers.js"></script>
+    <script src="leaflet-1.7.1/leaflet-image.js"></script>
+
+    <style>
+        #mapContainer {
+            display: flex;
+            gap: 50px;
+        }
+        #map {
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        #puzzleBoard {
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mapContainer">
+        <div id="map"></div>
+        <div id="puzzleBoard"></div>
+    </div>
+
+    <button id="getLocation">Get Current Location</button>
+    <button id="saveButton">Save Raster Map</button>
+    <br>
+
+    <script>
+        let map = L.map('map').setView([53.430127, 14.564802], 18);
+        // L.tileLayer.provider('OpenStreetMap.DE').addTo(map);
+        L.tileLayer.provider('Esri.WorldImagery').addTo(map);
+
+        document.getElementById("getLocation").addEventListener("click", function(event) {
+            if (! navigator.geolocation) {
+                console.log("No geolocation.");
+            }
+
+            navigator.geolocation.getCurrentPosition(position => {
+                console.log(position);
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                map.setView([lat, lon]);
+            }, positionError => {
+                console.error(positionError);
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

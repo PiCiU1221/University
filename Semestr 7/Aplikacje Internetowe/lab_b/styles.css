@@ -1,0 +1,196 @@
+:root {
+    --bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --accent: #4a90e2;
+    --danger: #e74c3c;
+    --text: #333;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: var(--bg);
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 0 15px;
+    color: var(--text);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+#search:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+li {
+    background: var(--card-bg);
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+li.editing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    gap: 5px;
+}
+
+li span {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: #666;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.delete-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+.edit-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background: #357ab7;
+}
+
+.accept-btn {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background 0.2s;
+}
+
+.accept-btn:hover {
+    background: #388e3c;
+}
+
+.cancel-btn {
+    background: #999;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+    background: #666;
+}
+
+#addTaskSection {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#addTaskSection input,
+#addTaskSection button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+#newTask {
+    flex: 5;
+}
+
+#newDate {
+    flex: 3;
+}
+
+#addTask {
+    flex: 2;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#addTask:hover {
+    background: #357ab7;
+}
+
+.edit-input-date-wrapper {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+    min-width: 0;
+}
+
+.edit-input, .edit-date {
+    flex: 1 1 0;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.edit-buttons-wrapper {
+    display: flex;
+    flex: 0 0 auto;
+}
