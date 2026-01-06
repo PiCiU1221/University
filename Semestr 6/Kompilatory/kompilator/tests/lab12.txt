@@ -1,0 +1,24 @@
+int test1 = 0;
+int test2 = 0;
+
+int n = 20;
+int *x = new int [10];
+int *y = new int [n];
+
+print("Testy dynamicznych tablic");
+print("Wynikami powinny byc 11, 12, 13");
+
+x[6+1] = 11;
+y[11] = 12;
+
+test1 = x[7];
+test2 = y[11];
+
+print(test1);
+print(test2);
+
+int test3 = 0;
+x[1] = 9;
+y[2] = 4;
+test3 = x[1] + y[2];
+print(test3);

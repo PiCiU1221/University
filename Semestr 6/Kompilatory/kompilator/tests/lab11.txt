@@ -1,0 +1,14 @@
+print("Testy tablic wielowymiarowych");
+print("Wynikami powinny byc 11, 12.12");
+
+int b[10][10];
+b[5+1][2+1] = 11;
+int test = 0;
+test = b[5+1][2+1];
+print(test);
+
+float d[10][10];
+d[5+1][5+1] = 11.10;
+float test_float = 0.0;
+test_float = d[5+1][5+1] + 1.02;
+print(test_float);

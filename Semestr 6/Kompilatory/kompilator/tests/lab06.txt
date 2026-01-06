@@ -1,0 +1,19 @@
+string first_str = "Pierwotna wartosc:";
+string second_str = "Nowa wartosc:";
+
+int a = 5;
+print(first_str);
+print(a);
+input(a);
+
+print(second_str);
+print(a);
+
+print(999);
+print("works");
+print(3.14);
+print(348 + 236);
+
+char char1 = 'n';
+print(char1);
+print('b');

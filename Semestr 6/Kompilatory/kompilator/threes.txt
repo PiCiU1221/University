@@ -1,0 +1,20 @@
+DECL INT test1 = 0
+DECL INT test2 = 0
+DECL INT n = 20
+DECL PTR_INT x = new ARRAY_INT[10]
+DECL PTR_INT y = new ARRAY_INT[n]
+PRINT literal_0
+PRINT literal_1
+result2 = 6 + 1
+x[result2] = 11
+y[11] = 12
+test1 = x[7]
+test2 = y[11]
+PRINT test1
+PRINT test2
+DECL INT test3 = 0
+x[1] = 9
+y[2] = 4
+result3 = x[1] + y[2]
+test3 = result3
+PRINT test3

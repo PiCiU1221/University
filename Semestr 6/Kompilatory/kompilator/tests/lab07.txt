@@ -1,0 +1,72 @@
+int i = 0;
+
+print("Test if 1");
+print("Wynik powinien byc 11");
+
+if (5 == 5) {
+    i = 11;
+} else {
+    if (5 == 5) {
+        i = 22;
+    } else {
+        i = 33;
+    }
+}
+
+print(i);
+
+print("Test if 2");
+print("Wynik powinien byc 22");
+
+if (5 != 5) {
+    i = 11;
+} else {
+    if (5 == 5) {
+        i = 22;
+    } else {
+        i = 33;
+    }
+}
+
+print(i);
+
+print("Test if 3");
+print("Wynik powinien byc 33");
+
+if (5 != 5) {
+    i = 11;
+} else {
+    if (5 != 5) {
+        i = 22;
+    } else {
+        i = 33;
+    }
+}
+
+print(i);
+
+print("Test if 4");
+print("Wynik powinien byc 44");
+
+if (5 == 5) {
+    i = 44;
+    if (5 != 5) {
+        i = 22;
+    } else if (5 != 5) {
+        i = 33;
+    }
+}
+
+print(i);
+
+print("Test float w warunkach");
+print("Wynik powinien byc 55");
+
+float f1 = 1.2;
+float f2 = 2.7;
+
+if (f1 + 1 < f2) {
+    i = 55;
+}
+
+print(i);
